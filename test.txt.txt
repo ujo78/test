@@ -2,8 +2,8 @@ hi my name is Rakshit
 
 hi my name is Pranav
 
-=======
+
 hi my name is Bloodripper
->>>>>>> 00c78819ee0625fea06cbe4cd6f524c92425e852
+
 
 hi my name is Rishav

@@ -9,7 +9,7 @@ def printData(obj):
     data = obj.cursor.fetchall
 
     for i in obj.colums:
-        print(i)
+        print(data)
 
         
 conn = mysql.connect(

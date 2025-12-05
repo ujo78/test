@@ -30,11 +30,8 @@ class employee():
     def sort_employee(self):
         
         self.cursor.execute(f"SELECT * FROM {self.table_name} ORDER BY {self.colums[0]};")
-        self.cursor.fetchall()
         self.cursor.execute(f"SELECT * FROM {self.table_name} ORDER BY {self.colums[1]};")
-        self.cursor.fetchall()
         self.cursor.execute(f"SELECT * FROM {self.table_name} ORDER BY {self.colums[2]};")
-        self.cursor.fetchall()
         self.cursor.execute(f"SELECT * FROM {self.table_name} ORDER BY {self.colums[3]};")
         return self.cursor.fetchall()
 
@@ -57,3 +54,5 @@ class employee():
 
     def clear_table(self):
         self.cursor.execute(f"DELETE FROM {self.table_name};")
+        return self.cursor.fetchall()
+

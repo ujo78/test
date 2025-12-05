@@ -38,13 +38,10 @@ class employee():
     def search_employee(self):
         
         if self.id is not None:
-            self.cursor.execute(f"SELECT * FROM {self.table_name} WHERE {self.colums[0]} = {self.id};")
+            self.cursor.execute(self.cursor.execute(f"select * from {self.table_name} where {self.id} like {self.userid}%"))
         if self.name is not None:
-            self.cursor.execute(f"SELECT * FROM {self.table_name} WHERE {self.colums[1]} = '{self.name}';")
-        if self.salary is not None:
-            self.cursor.execute(f"SELECT * FROM {self.table_name} WHERE {self.colums[2]} = {self.salary};")
-        if self.age is not None:
-            self.cursor.execute(f"SELECT * FROM {self.table_name} WHERE {self.colums[3]} = {self.age};")
+            self.cursor.execute(f"select * from {self.table_name} where {self.name} like {self.username}%")
+
         return self.cursor.fetchall()
     
     def display_all(self):

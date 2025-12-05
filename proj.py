@@ -20,4 +20,22 @@ class project ():
         
     def update_project(self):
         self.cursor.execute(f"update {self.table_name} set {self.column[0]} = '{self.name}', {self.column[1]} = {self.duration}, {self.column[3]} = {self.budget}, {self.column[4]} = '{self.status}' where {self.column[2]} = {self.id}")
-        
+    
+    def sort_project(self):
+
+        self.cursor.execute(f"select * from {self.table_name} order by {self.column[0]}")
+        self.cursor.execute(f"select * from {self.table_name} order by {self.column[1]}")
+        self.cursor.execute(f"select * from {self.table_name} order by {self.column[2]}")
+        self.cursor.execute(f"select * from {self.table_name} order by {self.column[3]}")
+        self.cursor.execute(f"select * from {self.table_name} order by {self.column[4]}")
+        return self.cursor.fetchall() 
+    
+    def search_project(self):
+        self.cursor.execute(
+            f"select * from {self.table_name} where {self.column[2]} = {self.id}"
+            f"select * from {self.table_name} where {self.column[2]} = {self.name}"
+            f"select * from {self.table_name} where {self.column[2]} = {self.duration}"
+            f"select * from {self.table_name} where {self.column[2]} = {self.budget}"
+            f"select * from {self.table_name} where {self.column[2]} = {self.status}")
+        return self.cursor.fetchall() 
+    

@@ -1,5 +1,5 @@
 import mysql.connector as mysql
-import employees as emp
+from employees import *
 import proj
 
 
@@ -21,7 +21,7 @@ conn = mysql.connect(
 
 cursor = conn.cursor()
 
-employee = emp.customer(cursor)
+emp = employee(cursor)
 project = proj.project(cursor)
 
 
@@ -33,43 +33,50 @@ while(True):
     print("5 : Add Project")
     print("6 : Delete Project")
     print("7 : Update Project")
-    print("8 : Show employees")
-    print("9 : Show projects")
-    print("10 : Exit")
+    print("8 : Sort Employees")
+    print("9 : Search Employee")
+    print("10 : Sort Projects")
+    print("11 : Search Project")
+    print("12 : Search Project")
+    print("13 : Search Project")
+    print("14 : Display Employee Table")
+    print("15 : Display Project Table")
+    
+    print("16 : Exit")
 
     choice = int(input("Enter your choice"))
 
     if choice == 1:
-        employee.createTable()
-        project.createTable()
+        emp.createTable()
+        project.create_table()
         print("Tables created")
 
     if choice == 2:
-            employee.id = int(input("Enter employee id: "))
-            employee.name = input("Enter employee name: ")
-            employee.salary = int(input("Enter salary: "))
-            employee.age = int(input("Enter age: "))
+            emp.id = int(input("Enter employee id: "))
+            emp.name = input("Enter employee name: ")
+            emp.salary = int(input("Enter salary: "))
+            emp.age = int(input("Enter age: "))
 
-            employee.add_employee()
+            emp.add_employee()
             print("Employee inserted.")
     
     if choice == 3:
-         employee.id = int(input("Enter employee id: "))
-         employee.delete_employee()
+         emp.id = int(input("Enter employee id: "))
+         emp.delete_employee()
          print("Employee deleted")
 
     if choice == 4:
-        employee.id = int(input("Enter new id: "))
-        employee.name = input("Enter new name")
-        employee.salary = int(input("Enter new salary"))
-        employee.age = int(input("Enter new age"))
+        emp.id = int(input("Enter new id: "))
+        emp.name = input("Enter new name")
+        emp.salary = int(input("Enter new salary"))
+        emp.age = int(input("Enter new age"))
 
-        employee.update()
+        emp.update()
         print("Employee updated")
 
     if choice == 5:
         project.name = input("Enter project name")
-        project.duration = input("Enter the duration")
+        project.duration = int(input("Enter the duration"))
         project.id = int(input("Enter project id"))
         project.budget = int(input("Enter project budget"))
         project.status = input("Enter status of the project")
@@ -85,7 +92,7 @@ while(True):
 
     if choice == 7:
         project.name = input("Enter updated project name")
-        project.duration = input("Enter updated duration")
+        project.duration = int(input("Enter updated duration"))
         project.id = int(input("Enter updated id"))
         project.budget = int(input("Enter updated project budget"))
         project.status = input("Enter updated status of the project")
@@ -95,9 +102,17 @@ while(True):
         print("Project added")
 
     if choice == 8:
-        print("Employee table: ")
-        printData(employee)
+        print("Sort Employee ")
+        emp.sort_employee()
+        print("Table Sorted")
 
     if choice == 9:
-        print("Project table: ")
-        printData(project)
+        print("Search Employee")
+        emp.search_employee()
+        print("Searched employee")
+        
+    if choice == 10:
+        print(emp.display_all())
+
+    if choice == 11:
+        print(project.display_all())

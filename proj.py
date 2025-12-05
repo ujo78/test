@@ -38,4 +38,10 @@ class project ():
             f"select * from {self.table_name} where {self.column[2]} = {self.budget}"
             f"select * from {self.table_name} where {self.column[2]} = {self.status}")
         return self.cursor.fetchall() 
+    def display_all(self):
+        self.cursor.execute(f"select*from{self.table.name};")
+        return self.cursor.fetchall()
     
+    def clear_table(self):
+        self.cursor.execute(f"delete*from{self.table.name};")
+        return self.cursor.fetchall()

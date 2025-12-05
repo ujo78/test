@@ -36,8 +36,15 @@ changes to project
 Resheve Kumar
 changes to employee
 
+[00:20 , 5/12/25]
+Pranav Parashar
+changes to sqlconnector
+
 [00:40 , 6/12/25]
 Priyanshu Panda
 changes to project
 
+[00:50 , 5/12/25]
+Resheve Kumar
+changes to employee
 

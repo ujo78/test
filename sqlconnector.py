@@ -21,4 +21,25 @@ conn = mysql.connect(
 
 cursor = conn.cursor()
 
+employee = emp.customer()
+project = proj.project()
 
+
+while(True):
+    print("1 : Create Table")
+    print("2 : Add Employee")
+    print("3 : Delete Employee")
+    print("4 : Update Employee")
+    print("5 : Add Project")
+    print("6 : Delete Project")
+    print("7 : Update Project")
+    print("8 : Show employees")
+    print("9 : Show projects")
+    print("10 : Exit")
+
+    choice = int(input("Enter your choice"))
+
+    if choice == 1:
+        employee.createTable()
+        project.createTable()
+    

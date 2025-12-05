@@ -8,8 +8,7 @@ class project():
         self.id = None
         self.budget = None
         self.status = None
-        self.emp_id = None
-         
+        self.emp_id = None    
     def create_table(self):
         self.cursor.execute(
             f"create table {self.table_name}("
@@ -18,19 +17,16 @@ class project():
             f"{self.column[1]} int,"
             f"{self.column[3]} int,"
             f"{self.column[4]} varchar(255),"
-            f"{self.column[5]} int);"
-        )
+            f"{self.column[5]} int);")
 
     def add_project(self):
         self.cursor.execute(
             f"insert into {self.table_name} values("
-            f"{self.id},'{self.name}',{self.duration},{self.budget},'{self.status}',{self.emp_id})"
-        )
+            f"{self.id},'{self.name}',{self.duration},{self.budget},'{self.status}',{self.emp_id})")
     
     def delete_project(self):
         self.cursor.execute(
-            f"delete from {self.table_name} where {self.column[2]} = {self.id}"
-        )
+            f"delete from {self.table_name} where {self.column[2]} = {self.id}")
         
     def update_project(self):
         self.cursor.execute(
@@ -39,8 +35,7 @@ class project():
             f"{self.column[1]} = {self.duration}, "
             f"{self.column[3]} = {self.budget}, "
             f"{self.column[4]} = '{self.status}' "
-            f"where {self.column[2]} = {self.id}"
-        )
+            f"where {self.column[2]} = {self.id}")
     
     def sort_project(self):
         self.cursor.execute(f"select * from {self.table_name} order by {self.column[0]}")
@@ -53,30 +48,37 @@ class project():
     def search_project(self):
         if self.id is not None:
             self.cursor.execute(
-                f"select * from {self.table_name} where {self.column[2]} = {self.id}"
-            )
+                f"select * from {self.table_name} where {self.column[2]} = {self.id}")
         elif self.name is not None:
             self.cursor.execute(
-                f"select * from {self.table_name} where {self.column[0]} = '{self.name}'"
-            )
+                f"select * from {self.table_name} where {self.column[0]} = '{self.name}'")
         elif self.duration is not None:
             self.cursor.execute(
-                f"select * from {self.table_name} where {self.column[1]} = {self.duration}"
-            )
+                f"select * from {self.table_name} where {self.column[1]} = {self.duration}")
         elif self.budget is not None:
             self.cursor.execute(
-                f"select * from {self.table_name} where {self.column[3]} = {self.budget}"
-            )
+                f"select * from {self.table_name} where {self.column[3]} = {self.budget}")
+        elif self.status is not None:
+            self.cursor.execute(f"select * from {self.table_name} where {self.column[4]} = '{self.status}'")
+        else:
+            self.cursor.execute(f"select * from {self.table_name}")
+        return self.cursor.fetchall() 
+    
+    def find_by_search(self):
+        if self.id is not None:
+            self.cursor.execute(
+                f"select * from {self.table_name} where {self.column[2]} = {self.id}")
+        elif self.name is not None:
+            self.cursor.execute(
+                f"select * from {self.table_name} where {self.column[0]} like '%{self.name}%'")
         elif self.status is not None:
             self.cursor.execute(
-                f"select * from {self.table_name} where {self.column[4]} = '{self.status}'"
-            )
+                f"select * from {self.table_name} where {self.column[4]} like '%{self.status}%'" )
         else:
             self.cursor.execute(
-                f"select * from {self.table_name}"
-            )
-        return self.cursor.fetchall() 
-
+                f"select * from {self.table_name}")
+        return self.cursor.fetchall()
+ 
     def display_all(self):
         self.cursor.execute(f"select * from {self.table_name};")
         return self.cursor.fetchall()

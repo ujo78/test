@@ -27,11 +27,12 @@ class employee():
             f"WHERE {self.colums[0]} = {self.id};"
         )
 
+
        
     
-    def search_employee(self , searchbywhat , filterbywhat , searchinput):
+    def search_employee(self , searchbywhat , filterbywhat , searchinput , start , end):
      
-        self.cursor.execute(f"select * from table_name where {searchbywhat} like {searchinput}% and  {filterbywhat} between start and end")
+        self.cursor.execute(f"select * from table_name where {searchbywhat} like {searchinput}% and  {filterbywhat} between {start} and {end}")
 
         return self.cursor.fetchall()
 
@@ -48,3 +49,28 @@ class employee():
     def clear_table(self):
         self.cursor.execute(f"DELETE FROM {self.table_name};")
         return self.cursor.fetchall()
+    
+
+    
+
+    
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+    
+
+
+

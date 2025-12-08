@@ -1,0 +1,4 @@
+        def log(self, text):
+            file = open("log.txt", "a")
+            file.write(text + "\n")
+            file.close()

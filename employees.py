@@ -27,27 +27,29 @@ class employee():
             f"WHERE {self.colums[0]} = {self.id};"
         )
 
-    def sort_employee(self):
-        
-        self.cursor.execute(f"SELECT * FROM {self.table_name} ORDER BY {self.colums[0]};")
-        self.cursor.execute(f"SELECT * FROM {self.table_name} ORDER BY {self.colums[1]};")
-        self.cursor.execute(f"SELECT * FROM {self.table_name} ORDER BY {self.colums[2]};")
-        self.cursor.execute(f"SELECT * FROM {self.table_name} ORDER BY {self.colums[3]};")
-        return self.cursor.fetchall()
-
-    def search_employee(self):
-        
-        if self.id is not None:
-            self.cursor.execute(self.cursor.execute(f"select * from {self.table_name} where {self.id} like {self.userid}%"))
-        if self.name is not None:
-            self.cursor.execute(f"select * from {self.table_name} where {self.name} like {self.username}%")
-
-        return self.cursor.fetchall()
+       
     
-    def display_all(self):
-        self.cursor.execute(f"SELECT * FROM {self.table_name};")
+    def search_employee(self , searchbywhat , filterbywhat , searchinput):
+     
+        self.cursor.execute(f"select * from table_name where {searchbywhat} like {searchinput}% and  {filterbywhat} between start and end")
+
+        return self.cursor.fetchall()
+
+
+    def sort(self , sortbywhat , ascordsc = True):
+        if ascordsc == True:
+            self.cursor.execute(f"Select * from {self.table_name} order by {sortbywhat} ")
+        else: 
+            ascordsc = "DESC"
+            self.cursor.execute(f"Select * from {self.table_name} order by {sortbywhat} {ascordsc} ")
         return self.cursor.fetchall()
     
 
+<<<<<<< HEAD
 
 
+=======
+    def clear_table(self):
+        self.cursor.execute(f"DELETE FROM {self.table_name};")
+        return self.cursor.fetchall()
+>>>>>>> a8d60bea281a3674589656f89515b2939b2710f8

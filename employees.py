@@ -49,7 +49,5 @@ class employee():
         return self.cursor.fetchall()
     
 
-    def clear_table(self):
-        self.cursor.execute(f"DELETE FROM {self.table_name};")
-        return self.cursor.fetchall()
+
 

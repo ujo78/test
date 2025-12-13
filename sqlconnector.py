@@ -15,7 +15,7 @@ def printData(obj):
 conn = mysql.connect(
     host = "localhost" ,
     user = "root" ,
-    password = "Pp7004554599" ,
+    password = "@may2004" ,
     database = "EMS"
     )
 

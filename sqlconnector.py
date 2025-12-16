@@ -6,10 +6,7 @@ import proj
 def printData(obj):
     
     obj.cursor.execute(f"Select * from {obj.table_name};")
-    data = obj.cursor.fetchall
-
-    for i in obj.colums:
-        print(data)
+    return obj.cursor.fetchall()
 
         
 conn = mysql.connect(
@@ -33,9 +30,9 @@ while(True):
     print("5 : Add Project")
     print("6 : Delete Project")
     print("7 : Update Project")
-    print("8 : Sort Employees")
-    print("9 : Search Employee")
-    print("10 : Sort Projects")
+    print("8 : Search Employee")
+    print("9 : Sort Employee")
+    print("10 : Clear Employee Table")
     print("11 : Search Project")
     print("12 : Search Project")
     print("13 : Search Project")
@@ -66,12 +63,13 @@ while(True):
          print("Employee deleted")
 
     if choice == 4:
+        print("Enter the details: ")
         emp.id = int(input("Enter new id: "))
         emp.name = input("Enter new name")
         emp.salary = int(input("Enter new salary"))
         emp.age = int(input("Enter new age"))
 
-        emp.update()
+        emp.update_employee()
         print("Employee updated")
 
     if choice == 5:
@@ -102,17 +100,49 @@ while(True):
         print("Project added")
 
     if choice == 8:
-        print("Sort Employee ")
-        emp.sort_employee()
-        print("Table Sorted")
+        print("Enter input for condition to search by id, name, salary")
+        searchbywhat = input("Enter by what you want to search")
+        searchinput = input("Enter to search")
+        filterbywhat = input("By what you want to filter")
+        start = input("Give the starting value")
+        end = input("Give the ending value")
+        if(filterbywhat == 'age'):
+            if(start >= 40 and end <= 50):
+                print("Budha Employees are: ")
+                print(emp.search_employee(searchbywhat , searchinput , filterbywhat,start,end))
+            
+            if(start >= 30 and end <= 39):    
+                print("Medium Employees are: ")
+                print(emp.search_employee(searchbywhat , searchinput , filterbywhat,start,end))
+
+            if(start >= 20 and end <= 29):    
+                print("Young Employees are: ")
+                print(emp.search_employee(searchbywhat , searchinput , filterbywhat,start,end))
+
+        if(filterbywhat == 'salary'):
+            if(start >= 40,000 and end <= 50,000):
+                print("Budha Employees are: ")
+                print(emp.search_employee(searchbywhat , searchinput , filterbywhat,start,end))
+            
+            if(start >= 30,000 and end <= 39,000):    
+                print("Medium Employees are: ")
+                print(emp.search_employee(searchbywhat , searchinput , filterbywhat,start,end))
+
+            if(start >= 20,000 and end <= 29,000):    
+                print("Young Employees are: ")
+                print(emp.search_employee(searchbywhat , searchinput , filterbywhat,start,end))
+        
 
     if choice == 9:
-        print("Search Employee")
-        emp.search_employee()
-        print("Searched employee")
+        sortbywhat =input("Enter the condition to sort for: ")
+        print("Sorted employees are")
+        print(emp.sort(sortbywhat))
         
     if choice == 10:
-        print(emp.display_all())
+        print(emp.clear_table())
 
     if choice == 11:
-        print(project.display_all())
+        print("Table is : ")
+        print(printData(emp))
+
+   
